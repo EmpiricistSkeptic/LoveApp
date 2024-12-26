@@ -1,0 +1,69 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* Основной контейнер с фоном */
+  #main-page {
+    min-height: 100vh; /* Обеспечиваем, что фон будет покрывать всю высоту экрана */
+    background-size: cover; /* Растягиваем фон по экрану */
+    background-position: bottom center; /* Фиксируем изображение на низу */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Фиксируем фон */
+  }
+  
+  /* Стиль для основного контента */
+  #main-page #main-content {
+    text-align: center;
+    margin-top: 10%;
+  }
+  
+  /* Стиль для изображения Луны */
+  #main-page .moon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 0;  /* Убираем отступы, если они есть */
+  }
+  
+  #main-page .moon-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;  /* Обеспечиваем, чтобы изображение корректно заполнило круг */
+    margin: 0;  /* Убираем лишние отступы */
+  }
+  
+  /* Стиль для надписи */
+  #main-page .birthday-message {
+    font-size: 24px;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 30px;
+  }
+  
+  /* Кнопки */
+  #main-page .buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  #main-page .custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  #main-page .custom-button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+    border-color: black;
+  }

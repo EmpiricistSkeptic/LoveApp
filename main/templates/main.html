@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная страница</title>
+  <!-- Подключение стилей для главной страницы -->
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body id="main-page">
+  <script>
+    // Передача URL фона из Django в JavaScript через атрибут data-background
+    document.addEventListener('DOMContentLoaded', () => {
+      const backgroundUrl = document.body.getAttribute('data-background');
+      document.body.style.backgroundImage = url("${backgroundUrl}");
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundRepeat = "no-repeat";
+      document.body.style.backgroundAttachment = "fixed";
+    });
+  </script>
+
+  <!-- Добавление data-атрибута с URL фона -->
+  <body id="main-page" data-background="{% static 'images/background.jpg' %}">
+    <div id="main-content">
+      <!-- Фотография Луны -->
+      <div class="moon-container">
+        <img src="{% static 'images/The_moon.png' %}" alt="Луна" class="moon-image">
+      </div>
+
+      <!-- Надпись -->
+      <h1 class="birthday-message">Happy Birthday, The Love Of My Life!</h1>
+
+      <!-- Кнопки -->
+      <div class="buttons-container">
+        <a href="/gifts/" class="custom-button">Подарки</a>
+        <a href="/letters/" class="custom-button">Письма</a>
+        <a href="/poems/" class="custom-button">Стихи</a>
+      </div>
+    </div>
+</body>
+</html>
