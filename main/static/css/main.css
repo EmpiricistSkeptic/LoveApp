@@ -3,14 +3,6 @@ html, body {
     margin: 0;
   }
   
-  /* Основной контейнер с фоном */
-  #main-page {
-    min-height: 100vh; /* Обеспечиваем, что фон будет покрывать всю высоту экрана */
-    background-size: cover; /* Растягиваем фон по экрану */
-    background-position: bottom center; /* Фиксируем изображение на низу */
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Фиксируем фон */
-  }
   
   /* Стиль для основного контента */
   #main-page #main-content {
