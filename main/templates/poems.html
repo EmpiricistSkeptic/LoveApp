@@ -8,6 +8,18 @@
   <link rel="stylesheet" href="{% static 'css/poems.css' %}">
 </head>
 <body id="poems-page" data-background="{% static 'images/poems_background.jpg' %}">
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Получаем путь к изображению из data-атрибута
+      const backgroundUrl = document.body.getAttribute('data-background');
+      // Устанавливаем фон с использованием JavaScript
+      document.body.style.backgroundImage = "url('" + backgroundUrl + "')";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundPosition = "center";
+      document.body.style.backgroundRepeat = "no-repeat";
+      document.body.style.backgroundAttachment = "fixed";
+    });
+  </script>
 
   <div class="poems-container">
     <h1>Эти стихи для моей любимой</h1>
