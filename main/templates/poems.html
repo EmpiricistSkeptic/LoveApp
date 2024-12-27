@@ -22,7 +22,7 @@
   </script>
 
   <div class="poems-container">
-    <h1>Эти стихи для моей любимой</h1>
+    <h1>Poems for my lovely lady</h1>
     <!-- Убедимся, что контейнер для текста виден -->
     <div id="poem-text" class="poem-text">Загрузка стихов...</div>
 
@@ -38,16 +38,68 @@
     document.addEventListener('DOMContentLoaded', () => {
   // Логика переключения стихов
   const poems = [
-    "Стих 1: Любовь, как лунный свет, согревает душу...",
-    "Стих 2: Ты, как рассвет, пробуждаешь мое сердце...",
-    "Стих 3: Нежность твоих глаз пленила меня...",
-    "Стих 4: Мое сердце, как звезда, светит только для тебя...",
-    "Стих 5: Любовь – это ты, твоя улыбка, твой голос...",
-    "Стих 6: Как лепестки роз, твои слова ласкают душу...",
-    "Стих 7: Ты – мой свет в темноте, моя жизнь, мой мир...",
-    "Стих 8: Каждое мгновение с тобой – это вечность...",
-    "Стих 9: Любовь к тебе – это музыка моей души...",
-    "Стих 10: Ты – мой смысл, моя сила, моя мечта..."
+    `Poem 1: When first thy voice did grace mine anxious ear,
+    A gentle muse with words so pure and bright,
+    I knew that love, which once seemed far, was near,
+    Thy soul had set my shadowed heart alight.
+    A friendship sparked by words both light and deep,
+    Bloomed softly, like the moon in silent skies,
+    In thee, I found the dreams I dared to keep,
+    Thy kindness washed the doubt from weary eyes.
+    The stars above could not outshine thy glow,
+    For thou, my love, art heaven’s sweetest muse,
+    Though trials loom, together we shall grow,
+    For thee, no path too treacherous to choose.
+    Forevermore, my heart is pledged to thee,
+    My guiding light, my love, my destiny.`,
+
+    `Poem 2: Oh, my soul sings of her,
+    Her eyes, her voice, the depth of her being—
+    I, the wanderer, found my home in her words.
+    Through the veil of screens, across lands unknown,
+    She reached me, touched me, awakened my core.
+    A gypsy’s heart with a warrior’s strength,
+    She bore the weight of silence,
+    Yet her laughter broke the chains of her solitude.
+    Rana, my moon, my guiding light,
+    Together we dream of shores untouched,
+    Of skies unmarked by borders.
+    With her, I see the vast expanse of life—
+    Infinite, eternal, beautiful.`,
+
+    `Poem 3: She came as quiet as the dawn,
+    No trumpet’s call to see her,
+    Yet her light, it stretched across the skies,
+    And wrapped the night in splendor.
+    The stars, though many, paled to her,
+    Their whispers weak, though glowing,
+    For her, my soul ached to adore,
+    Her love, like rivers flowing.
+    Though life had carved its jagged lines,
+    Her strength refused to falter,
+    She, my haven, my design,
+    My moon, my sacred altar.`,
+    `Poem 4: Oh beloved, thou art the fire within my chest,
+    The flame that turns my ashes to life.
+    I wandered through empty realms,
+    Searching for a soul to mirror mine,
+    And found thee, radiant and true.
+    Thy love is the wine I sip in silence,
+    A moonlit prayer upon my lips.
+    In thee, I lose myself; in thee, I find the divine.
+    My heart beats not as one, but two,
+    For thy soul has become my eternal home.`,
+
+    `Poem 5: I do not love you as stars love the sky,
+    For theirs is a distant love, untouchable.
+    I love you as rivers carve their way through stone,
+    Slow, steady, unyielding.
+    I love you in whispers, in shouts,
+    In the quiet mornings and restless nights.
+    I love you with the urgency of a storm,
+    And the peace of an endless sea.
+    You, my moon, my solace,
+    In your light, I am reborn.`
   ];
 
   let currentPoem = 0;

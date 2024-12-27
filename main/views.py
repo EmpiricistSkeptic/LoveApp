@@ -6,3 +6,7 @@ def main_page(request):
 
 def poems_page(request):
     return render(request, 'poems.html')
+
+
+def letters_page(request):
+    return render(request, 'letters.html')

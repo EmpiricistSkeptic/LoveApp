@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letters</title>
+  <link rel="stylesheet" href="{% static 'css/letters.css' %}">
+</head>
+<body id="letters-page" data-background="{% static 'images/letters_background.jpg' %}">
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Получаем путь к изображению из data-атрибута
+      const backgroundUrl = document.body.getAttribute('data-background');
+      // Устанавливаем фон с использованием JavaScript
+      document.body.style.backgroundImage = "url('" + backgroundUrl + "')";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundPosition = "center";
+      document.body.style.backgroundRepeat = "no-repeat";
+      document.body.style.backgroundAttachment = "fixed";
+    });
+  </script>
+
+  <div class="letters-container">
+    <h1>Letters for my one and only!</h1>
+    <!-- Убедимся, что контейнер для текста виден -->
+    <div id="letter-text" class="letter-text">Загрузка стихов...</div>
+
+    <div class="letters-buttons">
+      <button id="prev-letter" class="letter-nav">Previous</button>
+      <button id="next-letter" class="letter-nav">Next</button>
+    </div>
+
+    <a href="/" class="back-to-main">Back to the main page</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  // Логика переключения стихов
+  const letters = [
+    `Letter 1:  How I Found You
+    My dearest Rana,
+    When I think of how we met, it feels as if the universe itself conspired to bring us together. You were a mystery to me, distant yet so close. We started as friends, exchanging simple words about language and culture, but suddenly you became everything to me.
+    I can’t explain how it happened, but the moment I realized I loved you, my world became brighter, and my heart filled with light.
+    You are not just my love; you are my soulmate. Every day, I am grateful for your presence in my life, for your honesty, for allowing me to see the most intimate parts of you. You’ve filled the emptiness in my heart that I didn’t even know existed.
+    You once told me that you didn’t believe in love, that it was something distant and unreal to you. But now, I see how you’ve changed, how you’ve opened up, how you’ve allowed yourself to be vulnerable. And I am so proud of you.
+    You are my miracle, my love, and I want you to know how much you mean to me. I am ready to face any challenges life throws at us, as long as you are by my side.
+    Forever yours,
+    [Your Name] `,
+  ];
+
+  let currentLetter = 0;
+
+  // Получение элементов
+  const letterContainer = document.getElementById("letter-text");
+  const prevButton = document.getElementById("prev-letter");
+  const nextButton = document.getElementById("next-letter");
+
+  // Проверка элементов
+  if (!letterContainer || !prevButton || !nextButton) {
+    console.error("Не удалось найти элементы для переключения писем.");
+    return;
+  }
+
+  // Функция обновления текущего стиха
+  const updateLetter = () => {
+    letterContainer.textContent = letters[currentLetter];
+  };
+
+  // События для кнопок
+  prevButton.addEventListener("click", () => {
+    if (currentLetter > 0) {
+      currentLetter--;
+      updateLetter();
+    } else {
+      console.log("Это первые письмо, дальше назад нельзя.");
+    }
+  });
+
+  nextButton.addEventListener("click", () => {
+    if (currentLetter < letters.length - 1) {
+      currentLetter++;
+      updateLetter();
+    } else {
+      console.log("Это последнее письмо, дальше вперед нельзя.");
+    }
+  });
+
+  // Инициализация
+  updateLetter();
+});
+
+      
+  </script>
+
+</body>
+</html>
