@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Стихи</title>
+  <link rel="stylesheet" href="{% static 'css/poems.css' %}">
+</head>
+<body id="poems-page" data-background="{% static 'images/poems_background.jpg' %}">
+
+  <div class="poems-container">
+    <h1>Эти стихи для моей любимой</h1>
+    <!-- Убедимся, что контейнер для текста виден -->
+    <div id="poem-text" class="poem-text">Загрузка стихов...</div>
+
+    <div class="poem-buttons">
+      <button id="prev-poem" class="poem-nav">Назад</button>
+      <button id="next-poem" class="poem-nav">Вперед</button>
+    </div>
+
+    <a href="/" class="back-to-main">Назад на главную</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  // Логика переключения стихов
+  const poems = [
+    "Стих 1: Любовь, как лунный свет, согревает душу...",
+    "Стих 2: Ты, как рассвет, пробуждаешь мое сердце...",
+    "Стих 3: Нежность твоих глаз пленила меня...",
+    "Стих 4: Мое сердце, как звезда, светит только для тебя...",
+    "Стих 5: Любовь – это ты, твоя улыбка, твой голос...",
+    "Стих 6: Как лепестки роз, твои слова ласкают душу...",
+    "Стих 7: Ты – мой свет в темноте, моя жизнь, мой мир...",
+    "Стих 8: Каждое мгновение с тобой – это вечность...",
+    "Стих 9: Любовь к тебе – это музыка моей души...",
+    "Стих 10: Ты – мой смысл, моя сила, моя мечта..."
+  ];
+
+  let currentPoem = 0;
+
+  // Получение элементов
+  const poemContainer = document.getElementById("poem-text");
+  const prevButton = document.getElementById("prev-poem");
+  const nextButton = document.getElementById("next-poem");
+
+  // Проверка элементов
+  if (!poemContainer || !prevButton || !nextButton) {
+    console.error("Не удалось найти элементы для переключения стихов.");
+    return;
+  }
+
+  // Функция обновления текущего стиха
+  const updatePoem = () => {
+    poemContainer.textContent = poems[currentPoem];
+  };
+
+  // События для кнопок
+  prevButton.addEventListener("click", () => {
+    if (currentPoem > 0) {
+      currentPoem--;
+      updatePoem();
+    } else {
+      console.log("Это первый стих, дальше назад нельзя.");
+    }
+  });
+
+  nextButton.addEventListener("click", () => {
+    if (currentPoem < poems.length - 1) {
+      currentPoem++;
+      updatePoem();
+    } else {
+      console.log("Это последний стих, дальше вперед нельзя.");
+    }
+  });
+
+  // Инициализация
+  updatePoem();
+});
+
+      
+  </script>
+
+</body>
+</html>
