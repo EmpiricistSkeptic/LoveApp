@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Стихи</title>
+  <title>Poems</title>
   <link rel="stylesheet" href="{% static 'css/poems.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
 </head>
 <body id="poems-page" data-background="{% static 'images/poems_background.jpg' %}">
   <script>
@@ -22,16 +23,16 @@
   </script>
 
   <div class="poems-container">
-    <h1>Poems for my lovely lady</h1>
+    <h1>Poems for my lovely lady!</h1>
     <!-- Убедимся, что контейнер для текста виден -->
     <div id="poem-text" class="poem-text">Загрузка стихов...</div>
 
     <div class="poem-buttons">
-      <button id="prev-poem" class="poem-nav">Назад</button>
-      <button id="next-poem" class="poem-nav">Вперед</button>
+      <button id="prev-poem" class="poem-nav">Previous</button>
+      <button id="next-poem" class="poem-nav">Next</button>
     </div>
 
-    <a href="/" class="back-to-main">Назад на главную</a>
+    <a href="/" class="back-to-main">Back to the main</a>
   </div>
 
   <script>
