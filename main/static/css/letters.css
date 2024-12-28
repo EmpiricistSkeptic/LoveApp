@@ -1,6 +1,6 @@
 body#letters-page {
-    font-family: 'Arial', sans-serif;
-    color: white;
+    font-family: 'Garamond', sans-serif;
+    color: rgb(255, 255, 255);
     text-align: center;
     margin: 0;
     padding: 0;
@@ -20,7 +20,7 @@ body#letters-page {
   
   /* Стихи */
   .letter-text {
-    font-size: 24px;
+    font-size: 28px;
     line-height: 1.6;
     margin: 20px 0;
     padding: 20px;
