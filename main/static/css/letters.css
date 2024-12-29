@@ -72,3 +72,39 @@ body#letters-page {
   .back-to-main:hover {
     background: linear-gradient(45deg, #ff9ec9, #76aaff);
   }
+
+@media (max-width: 480px) {
+  body#letters-page {
+    font-size: 14px; /* Общий уменьшенный размер шрифта */
+  }
+
+  .letters-container {
+    padding: 15px; /* Уменьшенные отступы */
+    border-radius: 10px; /* Меньший радиус закругления */
+  }
+
+  .letter-text {
+    font-size: 22px; /* Немного уменьшен размер шрифта для текста писем */
+    line-height: 1.5; /* Оптимальное межстрочное расстояние */
+    margin: 10px 0; /* Уменьшенные отступы сверху и снизу */
+    padding: 15px; /* Уменьшенные внутренние отступы */
+    max-width: 90%; /* Подгон ширины под узкие экраны */
+  }
+
+  .letter-buttons {
+    flex-direction: column; /* Кнопки располагаются вертикально */
+    gap: 10px; /* Уменьшенный разрыв между кнопками */
+    margin: 15px 0; /* Уменьшенные внешние отступы */
+  }
+
+  .letter-nav {
+    font-size: 16px; /* Уменьшенный размер шрифта */
+    padding: 10px 20px; /* Уменьшенные внутренние отступы */
+  }
+
+  .back-to-main {
+    font-size: 16px; /* Сохранение размера шрифта */
+    padding: 12px 20px; /* Уменьшенные отступы */
+    margin-top: 15px; /* Уменьшенное расстояние сверху */
+  }
+}
