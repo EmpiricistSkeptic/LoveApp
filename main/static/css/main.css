@@ -102,3 +102,66 @@ html, body {
         opacity: 0;
     }
 }
+
+/* Общие стили для всех устройств остаются без изменений */
+
+/* Адаптация для экранов с шириной до 768px */
+@media (max-width: 768px) {
+    /* Уменьшаем размер основного контента */
+    #main-page #main-content {
+        margin-top: 5%; /* Увеличиваем отступ сверху */
+    }
+
+    /* Стили для контейнера и изображения Луны */
+    #main-page .moon-container {
+        margin-bottom: 10px; /* Уменьшаем отступ снизу */
+        transform: translateY(-10px); /* Снижаем смещение */
+    }
+
+    #main-page .moon-image {
+        width: 160px; /* Уменьшаем размер изображения */
+        height: 160px;
+    }
+
+    /* Адаптируем размер текста для надписи */
+    #main-page .birthday-message {
+        font-size: 32px; /* Уменьшаем шрифт */
+        margin-top: 0; /* Снижаем отрицательный отступ */
+        margin-bottom: 20px;
+    }
+
+    /* Стили для кнопок */
+    #main-page .buttons-container {
+        flex-direction: column; /* Располагаем кнопки в колонку */
+        gap: 20px; /* Уменьшаем расстояние между кнопками */
+    }
+
+    #main-page .custom-button {
+        font-size: 18px; /* Уменьшаем шрифт кнопок */
+        padding: 10px 20px; /* Уменьшаем внутренние отступы */
+        width: 80%; /* Кнопки занимают 80% ширины контейнера */
+        margin: 0 auto; /* Центрируем кнопки */
+    }
+
+    #main-page .custom-button:hover {
+        transform: scale(1.05); /* Уменьшаем увеличение при наведении */
+    }
+}
+
+/* Адаптация для экранов с шириной до 480px (маленькие телефоны) */
+@media (max-width: 480px) {
+    #main-page .moon-image {
+        width: 140px; /* Ещё больше уменьшаем изображение */
+        height: 140px;
+    }
+
+    #main-page .birthday-message {
+        font-size: 26px; /* Ещё больше уменьшаем текст */
+    }
+
+    #main-page .custom-button {
+        font-size: 16px; /* Уменьшаем шрифт кнопок */
+        padding: 8px 16px; /* Уменьшаем отступы */
+        width: 60%; /* Кнопки занимают почти всю ширину экрана */
+    }
+}

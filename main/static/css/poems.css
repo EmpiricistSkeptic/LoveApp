@@ -72,3 +72,43 @@ body#poems-page {
   .back-to-main:hover {
     background: linear-gradient(45deg, #ff85b8, #76aaff);
   }
+
+@media screen and (max-width: 480px) {
+  body#poems-page {
+    font-size: 16px; /* Уменьшаем общий размер шрифта для удобного чтения */
+    padding: 10px;
+  }
+
+  .poems-container {
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  .poem-text {
+    font-size: 20px; /* Уменьшаем размер шрифта для удобного чтения */
+    padding: 15px; /* Уменьшаем внутренние отступы */
+    line-height: 1.4;
+    max-width: 100%; /* Делаем текст занимать всю ширину экрана */
+  }
+
+  .poem-buttons {
+    flex-direction: row; /* Располагаем кнопки вертикально */
+    justify-content: space-between;
+    gap: 20px; /* Уменьшаем промежуток между кнопками */
+  }
+
+  .poem-nav {
+    font-size: 16px; /* Уменьшаем размер текста кнопок */
+    padding: 10px; /* Уменьшаем внутренние отступы */
+    border-radius: 6px; /* Немного меньше скругление */
+    width: 100%; /* Кнопки занимают всю ширину */
+  }
+
+  .back-to-main {
+    font-size: 14px; /* Уменьшаем размер шрифта */
+    padding: 10px; /* Уменьшаем отступы */
+    width: 100%; /* Ссылка занимает всю ширину */
+    text-align: center; /* Центрируем текст */
+    border-radius: 6px; /* Скругляем углы */
+  }
+}
