@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Романтическая карта</title>
     <!-- Подключаем стили Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.js"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css "/>
     <!-- Подключаем CSS через Django static -->
     <link rel="stylesheet" href="{% static 'css/map.css' %}">
 </head>
@@ -54,10 +54,10 @@
 
         locations.forEach(location => {
             const popupContent = 
-                <div>
+                `<div>
                     <img src="${location.img}" alt="Фото" style="width: 100%; border-radius: 8px;" />
                     <p>${location.text}</p>
-                </div>
+                </div>`
             ;
             L.marker(location.coords).addTo(map).bindPopup(popupContent);
         });
