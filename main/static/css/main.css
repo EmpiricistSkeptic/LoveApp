@@ -151,8 +151,8 @@ html, body {
 /* Адаптация для экранов с шириной до 480px (маленькие телефоны) */
 @media (max-width: 480px) {
     #main-page .moon-image {
-        width: 140px; /* Ещё больше уменьшаем изображение */
-        height: 140px;
+        width: 130px; /* Ещё больше уменьшаем изображение */
+        height: 130px;
     }
 
     #main-page .birthday-message {
