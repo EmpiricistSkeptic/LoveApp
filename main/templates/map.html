@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Романтическая карта</title>
+    <!-- Подключаем стили Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.js"/>
+    <!-- Подключаем CSS через Django static -->
+    <link rel="stylesheet" href="{% static 'css/map.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Места, которые мы посетим вместе</h1>
+    </header>
+    <main>
+        <div id="map"></div>
+    </main>
+    <footer>
+        <p>С любовью, специально для тебя ❤️</p>
+    </footer>
+    <!-- Подключаем Leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- JavaScript для работы с картой -->
+    <script>
+        // Инициализация карты
+        const map = L.map('map').setView([48.8566, 2.3522], 5); // Координаты центра карты (например, Париж)
+
+        // Подключаем базовый слой карты
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Добавляем маркеры
+        const locations = [
+            {
+                coords: [48.8566, 2.3522], // Координаты (например, Париж)
+                text: "Здесь мы будем смотреть на Эйфелеву башню!",
+                img: "{% static 'images/paris.jpg' %}" // URL фотографии через Django static
+            },
+            {
+                coords: [50.0755, 14.4378], // Координаты (например, Прага)
+                text: "Здесь мы будем гулять по Карлову мосту!",
+                img: "{% static 'images/prague.jpg' %}"
+            },
+            {
+                coords: [41.9028, 12.4964], // Координаты (например, Рим)
+                text: "Здесь мы будем наслаждаться Колизеем!",
+                img: "{% static 'images/rome.jpg' %}"
+            }
+        ];
+
+        locations.forEach(location => {
+            const popupContent = 
+                <div>
+                    <img src="${location.img}" alt="Фото" style="width: 100%; border-radius: 8px;" />
+                    <p>${location.text}</p>
+                </div>
+            ;
+            L.marker(location.coords).addTo(map).bindPopup(popupContent);
+        });
+    </script>
+</body>
+</html>

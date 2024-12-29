@@ -1,0 +1,40 @@
+/* Основной стиль */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Заголовок */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffe6e6;
+    color: #b30000;
+    border-bottom: 2px solid #ffcccc;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* Карта */
+#map {
+    height: 80vh;
+    margin: 20px auto;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    width: 90%;
+}
+
+/* Подвал */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #ffe6e6;
+    color: #b30000;
+    border-top: 2px solid #ffcccc;
+}

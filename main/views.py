@@ -10,3 +10,6 @@ def poems_page(request):
 
 def letters_page(request):
     return render(request, 'letters.html')
+
+def map_page(request):
+    return render(request, 'map.html')
