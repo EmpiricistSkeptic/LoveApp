@@ -94,7 +94,8 @@ body#poems-page {
   .poem-buttons {
     flex-direction: row; /* Располагаем кнопки вертикально */
     justify-content: space-between;
-    gap: 20px; /* Уменьшаем промежуток между кнопками */
+    gap: 10px; /* Уменьшаем промежуток между кнопками */
+    margin: 1px 0;
   }
 
   .poem-nav {
