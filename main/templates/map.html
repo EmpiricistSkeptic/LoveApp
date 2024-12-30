@@ -36,20 +36,140 @@
         // Добавляем маркеры
         const locations = [
             {
-                coords: [48.8566, 2.3522], // Координаты (например, Париж)
-                text: "Здесь мы будем смотреть на Эйфелеву башню!",
-                img: "{% static 'images/paris.jpg' %}" // URL фотографии через Django static
+                coords: [40.6333, 14.602], // Координаты (например, Париж)
+                text: "As the salty breeze carries the scent of the sea, I’d rest my head on your shoulder, letting the view of the endless ocean reflect the depth of my feelings. With laughter in our voices, I’d whisper, Let’s get lost here forever.",
+                img: "{% static 'images/Alamfi.jpg' %}" // URL фотографии через Django static
             },
             {
-                coords: [50.0755, 14.4378], // Координаты (например, Прага)
-                text: "Здесь мы будем гулять по Карлову мосту!",
-                img: "{% static 'images/prague.jpg' %}"
+                coords: [43.2760, 6.6400], // Координаты (например, Прага)
+                text: "As we stroll along the glamorous port of Saint-Tropez, I would take your hand, and in the calm of the evening, I would kiss you softly, the glow of the sunset reflecting in your eyes.",
+                img: "{% static 'images/Saint_tropez.jpg' %}"
             },
             {
-                coords: [41.9028, 12.4964], // Координаты (например, Рим)
-                text: "Здесь мы будем наслаждаться Колизеем!",
-                img: "{% static 'images/rome.jpg' %}"
+                coords: [45.9770, 9.2530], // Координаты (например, Рим)
+                text: "In the quiet beauty of Bellagio, on the shores of Lake Como, I would wrap my arms around you as we take a peaceful boat ride. The serenity of the lake would mirror my love for you, and I would kiss you softly, making a promise that we’ll always have moments like this.",
+                img: "{% static 'images/Lake_Como.jpg' %}"
                 
+            },
+            {
+                coords: [48.6360, 1.5110], 
+                text: "Walking through the ancient streets of Mont Saint-Michel, I would gently hold your hand, taking you to the highest point for a breathtaking view of the sea. There, I would kiss you, as the wind whispers around us, making the world feel infinite.",
+                img: "{% static 'images/les-portes.jpg' %}" 
+            },
+            {
+                coords: [40.6280, 14.4800], 
+                text: "On the beach of Positano, with the sun setting behind the cliffs, I would walk beside you, the cool ocean breeze brushing against our skin. I would gently kiss you, feeling the magic of the moment and knowing it’s a memory we’ll keep forever.",
+                img: "{% static 'images/positano-italy-beach.jpg' %}" 
+            },
+            {
+                coords: [47.6163, 1.5165], 
+                text: "In front of the majestic Château de Chambord, I would pull you close, feeling the grandeur of the castle behind us. I would kiss you passionately, knowing that this place, like our love, will never be forgotten.",
+                img: "{% static 'images/Cheatou_de.jpg' %}" 
+            },
+            {
+                coords: [44.1118, 9.7155], 
+                text: "As we hike along the colorful villages of Cinque Terre, with the ocean waves crashing below, I would hold your hand, looking into your eyes as if we were the only two people in the world. I would steal a kiss, knowing that these moments are as precious as the beautiful landscape around us.",
+                img: "{% static 'images/Cinque_terre.jpg' %}" 
+            },
+            {
+                coords: [44.0522, 5.2192], 
+                text: "Amidst the endless purple lavender fields in Provence, I would hold you close, inhaling the sweet scent of flowers. I would kiss you softly, the world around us fading into the beauty of nature, just you and me.",
+                img: "{% static 'images/Lavender_fields.jpg' %}" 
+            },
+            {
+                coords: [45.7578, 4.8320], 
+                text: "In the enchanting streets of Lyon’s Old Town, I would pull you into a quiet alley, surrounded by history. With the lights of the city flickering around us, I would kiss you deeply and put my hand to your delicious place, feeling the romance of the moment.",
+                img: "{% static 'images/Lyon_oldtovn.jpg' %}" 
+            },
+            {
+                coords: [48.8867, 2.3431], 
+                text: "In the artistic heart of Paris, Montmartre, I would wander with you through its charming streets. I would stop, kiss you on the steps of the Sacré-Cœur, with the whole city spread out below us, and I would feel the world stop, just for you and me.",
+                img: "{% static 'images/Montmarte_paris.jpg' %}" 
+            },
+            {
+                coords: [48.8566, 2.3522], 
+                text: "At the base of the Eiffel Tower, as the lights twinkle above us, I would pull you close, whispering sweet words into your ear. I would kiss you deeply, under the glittering lights, as if the world was made just for this moment",
+                img: "{% static 'images/Paris_Ellf.jpg' %}" 
+            },
+            {
+                coords: [43.3188, 11.3305], 
+                text: "On the charming Piazza del Campo, I would take your hand and twirl you around, laughing together under the Tuscan sky. I would pull you close, sharing a kiss that feels as warm and comforting as the sun on our skin.",
+                img: "{% static 'images/Piazza_del_sienna.jpg' %}" 
+            },
+            {
+                coords: [43.7677, 11.2530], 
+                text: "Walking along the Ponte Vecchio, I’d buy you a small trinket from one of the artisan shops, something as unique as you. Then, I’d hold you close, swaying to imaginary music as the sunset paints the river gold.",
+                img: "{% static 'images/vecchio_florence.jpg' %}" 
+            },
+            {
+                coords: [43.6957, 7.2710], 
+                text: "Along the beautiful Promenade des Anglais, I would walk with you as the soft sound of the waves fills the air. I would stop to kiss you by the sea, letting the moment stretch into eternity, just you and me under the golden sunset.",
+                img: "{% static 'images/Promenade_des_anglais.jpg' %}" 
+            },
+            {
+                coords: [41.9028, 12.4964], 
+                text: "Standing in the shadow of history, I would trace your fingers with mine, imagining us as a timeless love story. I’d gently place a kiss on your forehead, promising that no force in the world could ever break the bond we share.",
+                img: "{% static 'images/Rome_colesseum.jpg' %}" 
+            },
+            {
+                coords: [41.9009, 12.4813], 
+                text: "Standing by the Trevi Fountain, I’d remind you of how we always dreamed of traveling together. I’d toss a coin into the water and say, “My wish already came true, the moment you loved me.” Then, I’d pull you close and kiss you under the shine of the sun.",
+                img: "{% static 'images/Rome_Trevi_fountain.jpg' %}" 
+            },
+            {
+                coords: [41.9029, 12.4534], 
+                text: "In the awe-inspiring St. Peter’s Basilica, I would pull you close, feeling the majesty of the place. With a tender kiss, I would remind you that no matter where we go, we’re creating something sacred, our own love story.",
+                img: "{% static 'images/st-peters-square-vatican.jpg' %}" 
+            },
+            {
+                coords: [45.4408, 12.3155], 
+                text: "As we glide through the shimmering waters of Venice, I’d remind you of the night we stayed up talking about what makes our souls connect. Under the Rialto Bridge, I’d hold your hand tightly and kiss you softly, letting the magic of this place echo how extraordinary you are to me.",
+                img: "{% static 'images/Venice_canal.jpg' %}" 
+            },
+            {
+                coords: [48.8049, 2.1204], 
+                text: "In the lavish gardens of Versailles, I would lead you to a quiet, hidden spot, surrounded by flowers. There, I would kiss you gently, feeling the romance of the gardens mirror the love blossoming between us.",
+                img: "{% static 'images/Versailles_Garden.jpg' %}" 
+            },
+            {
+                coords: [], 
+                text: "",
+                img: "{% static 'images/.jpg' %}" 
+            },
+            {
+                coords: [], 
+                text: "",
+                img: "{% static 'images/.jpg' %}" 
+            },
+            {
+                coords: [], 
+                text: "",
+                img: "{% static 'images/.jpg' %}" 
+            },
+            {
+                coords: [], 
+                text: "",
+                img: "{% static 'images/.jpg' %}" 
+            },
+            {
+                coords: [], 
+                text: "",
+                img: "{% static 'images/.jpg' %}" 
+            },
+            {
+                coords: [], 
+                text: "",
+                img: "{% static 'images/.jpg' %}" 
+            },
+            {
+                coords: [], 
+                text: "",
+                img: "{% static 'images/.jpg' %}" 
+            },
+            {
+                coords: [], 
+                text: "",
+                img: "{% static 'images/.jpg' %}" 
             },
 
         ];
