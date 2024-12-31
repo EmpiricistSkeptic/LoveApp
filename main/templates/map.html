@@ -28,7 +28,7 @@
     <!-- JavaScript для работы с картой -->
     <script>
         // Инициализация карты
-        const map = L.map('map').setView([48.8566, 2.3522], 5); // Координаты центра карты (например, Париж)
+        const map = L.map('map').setView([36.3156, 59.5680], 5); // Координаты центра карты (например, Париж)
 
         // Подключаем базовый слой карты
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -414,6 +414,13 @@
                 text: "We’ll sneak onto the ferry like spies, eyes scanning the horizon for danger. When we reach the tower, I’ll joke about making it our headquarters, but you’ll take it seriously, your mind already plotting. As the sun sets over the Bosphorus, you’ll lean in close and murmur, ‘We could own this city, you know.’ And I’ll believe you, because when you’re the boss, anything seems possible",
                 img: "{% static 'images/maidens_tover.jpg' %}" 
             },
+            {
+                coords: [36.32302, 59.51753],
+                text: "Standing outside your favorite ice cream spot, I’d grin and whisper, ‘So, this is where the queen indulges?’ Watching you light up, I’d tease, ‘What’s sweeter, the ice cream or you?’ before stealing a daring lick from your cone.   You’d narrow your eyes, pretending to scold me, ‘Careful, this place is sacred,’ before smirking and swiping a bit of your ice cream onto my lips. I’d laugh, leaning closer, my voice low, ‘You’re playing a dangerous game, darling.’ As we sit on a bench, I’d pull you into my side, tracing lazy circles on your thigh. ‘This place may have your childhood,’ I’d murmur, ‘but it’s our little secret now.’ And with that, Yogoland becomes our playground of sweet sins",
+                img: "{% static 'images/Ice-cream.jpg' %}" 
+            },
+
+            
         ];
 
         locations.forEach(location => {

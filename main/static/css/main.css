@@ -147,6 +147,16 @@ html, body {
 
 /* Адаптация для экранов с шириной до 480px (маленькие телефоны) */
 @media (max-width: 480px) {
+
+    #main-page #main-content {
+        margin-top: 3%; /* Увеличиваем отступ сверху */
+    }
+
+    /* Стили для контейнера и изображения Луны */
+    #main-page .moon-container {
+        margin-bottom: 5px; /* Уменьшаем отступ снизу */
+        transform: translateY(-10px); /* Снижаем смещение */
+    }
     #main-page .moon-image {
         width: 130px; /* Ещё больше уменьшаем изображение */
         height: 130px;
@@ -156,9 +166,14 @@ html, body {
         font-size: 26px; /* Ещё больше уменьшаем текст */
     }
 
+    #main-page .buttons-container {
+        flex-direction: column; /* Располагаем кнопки в колонку */
+        gap: 10px;
+    }
+
     #main-page .custom-button {
         font-size: 16px; /* Уменьшаем шрифт кнопок */
-        padding: 8px 16px; /* Уменьшаем отступы */
-        width: 60%; /* Кнопки занимают почти всю ширину экрана */
+        padding: 5px 13px; /* Уменьшаем отступы */
+        width: 50%; /* Кнопки занимают почти всю ширину экрана */
     }
 }
