@@ -308,8 +308,8 @@
                     <img src="${location.img}" alt="Фото" style="width: 100%; border-radius: 8px;" />
                     <p>${location.text}</p>
                 </div>`
+                L.marker(location.coords).addTo(map).bindPopup(popupContent)
             ;
-            L.marker(location.coords).addTo(map).bindPopup(popupContent);
         });
     </script>
 </body>

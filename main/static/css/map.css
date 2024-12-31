@@ -130,7 +130,7 @@ footer {
     }
 
     .leaflet-popup-content img {
-        margin: 8px 0; /* Уменьшение отступов для изображений */
+        margin: 8px 0;
     }
 
     /* Подвал */
