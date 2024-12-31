@@ -81,6 +81,62 @@ footer {
     background-color: #34495e;
     color: #ecf0f1;
     border-top: 2px solid #d1cccc;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+/* Медиа-запрос для экранов до 480px */
+@media (max-width: 480px) {
+    /* Основной стиль */
+    body {
+        font-size: 0.9rem; /* Уменьшение шрифта для мобильных устройств */
+        line-height: 1.1;
+    }
+
+    /* Заголовок */
+    header {
+        padding: 5px;
+    }
+
+    header h1 {
+        font-size: 2rem; /* Уменьшение размера заголовка */
+    }
+
+    .back-to-main {
+        padding: 8px 15px; /* Уменьшение размеров кнопки */
+        font-size: 0.9rem;
+    }
+
+    /* Карта */
+    #map {
+        height: calc(85vh - 50px); /* Уменьшение высоты карты для мобильных устройств */
+        margin: 15px auto;
+        width: 95%; /* Увеличение ширины карты на мобильных устройствах */
+        border-radius: 10px; /* Слегка уменьшенный радиус */
+    }
+
+    .leaflet-popup-content {
+        font-size: 1.0rem; /* Уменьшение текста в попапе */
+        line-height: 1.3;
+        max-height: 300px;
+        overflow: auto;
+        
+    }
+
+    .leaflet-popup-content-wrapper {
+        max-width: 300px;
+        word-break: break-word;
+        
+    }
+
+    .leaflet-popup-content img {
+        margin: 8px 0; /* Уменьшение отступов для изображений */
+    }
+
+    /* Подвал */
+    footer {
+        padding: 5px;
+        font-size: 1rem;
+        border-top: 1px solid #d1cccc;/* Уменьшение шрифта в подвале */
+    }
 }
