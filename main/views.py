@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework.authtoken.models import Token
 
 
 def main_page(request):
