@@ -31,15 +31,21 @@
     </div>
 
     <!-- Надпись -->
-    <h1 class="birthday-message">we are together for </h1>
+    <h1 class="birthday-message">y</h1>
 
     <!-- Кнопки -->
     <div class="buttons-container">
       <a href="/map/" class="custom-button">Map</a>
       <a href="/letters/" class="custom-button">Letters</a>
       <a href="/poems/" class="custom-button">Poems</a>
-      <a href="/questions/" class="custom-button">Questions</a
+      <a href="/questions/" class="custom-button">Questions</a>
     </div>
+
+    <div class="auth-container" id="auth-container">
+      <a href="{% url 'register' %}" class="custom-button">Registration</a>>
+      <a href="{% url 'login' %}" class="custom-button">Login</a>
+    </div>
+  </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="{% static 'js/main.js' %}"></script>

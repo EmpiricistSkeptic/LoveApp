@@ -27,3 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Запускаем генерацию звезд
     setInterval(createStar, 800); // Интервал появления новых звезд
 });
+
+
+

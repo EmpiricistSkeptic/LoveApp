@@ -13,7 +13,7 @@ class RelationshipDate(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    picture = models.ImageField(upload_to='pictures/')
+    picture = models.ImageField(upload_to='pictures/', blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
     mood = models.CharField(max_length=40, blank=True, null=True)
 
