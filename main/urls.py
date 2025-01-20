@@ -14,5 +14,7 @@ urlpatterns = [
     path('poems/', views.poems_page, name='poems_page'),
     path('letters/', views.letters_page, name='letters_page'),
     path('map/', views.map_page, name='map_page'),
+    path('link-profile/', views.link_profile, name='link-profile'),
+    path('profile/', views.profile_view, name='profile'),
     
 ]

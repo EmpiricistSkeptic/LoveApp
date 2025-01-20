@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.username }}'s Profile</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <h1>{{ user.username }}</h1>
+
+
+        <!-- Отображение изображения профиля -->
+        {% if user.profile.picture %}
+            <div class="profile-picture">
+                <img src="{{ user.profile.picture.url }}" alt="{{ user.username }}'s Profile Picture">
+            </div>
+        {% else %}
+            <p>No profile picture available.</p>
+        {% endif %}
+
+        <!-- Отображение биографии -->
+        <div class="profile-info">
+            <p><strong>Bio:</strong> {{ user.profile.bio|default:"No bio available" }}</p>
+        </div>
+
+        <!-- Отображение настроения -->
+        <div class="profile-mood">
+            <p><strong>Mood:</strong> {{ user.profile.mood|default:"Not set" }}</p>
+        </div>
+
+        <!-- Отображение уникального кода -->
+        {% if user.profile.unique_code %}
+            <div class="profile-code">
+                <p><strong>Unique Code:</strong> {{ user.profile.unique_code }}</p>
+            </div>
+        {% endif %}
+        
+        {% if not user.profile.partner %}
+        <a href="{% url 'link-profile' %}" class="link-profile-button">Link Your Profile</a>
+        {% endif %}
+
+        <!-- Проверка и отображение информации о партнере -->
+        {% if user.profile.partner %}
+            <h2>Partner's Profile</h2>
+            <p><strong>Partner:</strong> {{ user.profile.partner.user.username }}</p>
+            
+            <!-- Отображение биографии партнера -->
+            <p><strong>Bio:</strong> {{ user.profile.partner.bio|default:"No bio available" }}</p>
+
+            <!-- Отображение настроения партнера -->
+            <p><strong>Mood:</strong> {{ user.profile.partner.mood|default:"Not set" }}</p>
+            
+            <!-- Проверка и отображение изображения партнера -->
+            {% if user.profile.partner.picture %}
+                <div class="partner-picture">
+                    <img src="{{ user.profile.partner.picture.url }}" alt="{{ user.profile.partner.user.username }}'s Profile Picture">
+                </div>
+            {% else %}
+                <p>No partner profile picture available.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
+

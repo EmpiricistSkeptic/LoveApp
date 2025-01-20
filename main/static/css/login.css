@@ -1,0 +1,131 @@
+/* Общие стили для страницы */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212; /* Темный фон */
+    color: #ffffff; /* Белый текст */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    background: linear-gradient(135deg, #2a2a2a, #0f0f0f); /* Градиентный фон */
+}
+
+/* Стили для контейнера формы */
+.container {
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+    background-color: rgba(28, 28, 28, 0.9); /* Полупрозрачный фон */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Мягкая тень */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px); /* Размытие фона */
+}
+
+/* Стили для заголовка */
+h1 {
+    font-size: 2.8rem;
+    color: #ffffff;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* Стили для списка сообщений об ошибках */
+ul.messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: #ff4d4d;
+    margin-bottom: 20px;
+}
+
+ul.messages li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+/* Стили для формы */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+}
+
+/* Стили для каждого поля ввода */
+.input-field {
+    width: 100%;
+    padding: 15px;
+    margin: 12px 0;
+    border: 2px solid #333;
+    border-radius: 8px;
+    background-color: #222;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+/* Эффект при фокусе на полях */
+.input-field:focus {
+    border-color: #4caf50;
+    background-color: #333;
+}
+
+/* Стили для кнопки */
+button.submit-btn {
+    background-color: #4caf50; /* Зеленая кнопка */
+    border: none;
+    cursor: pointer;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+}
+
+/* Эффект при наведении на кнопку */
+button.submit-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-5px); /* Немного поднимаем кнопку */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+}
+
+/* Плавная анимация появления */
+form, .container h1 {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Анимация плавного появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для маленьких экранов (мобильные устройства) */
+@media (max-width: 600px) {
+    body {
+        padding: 20px;
+    }
+    .container {
+        padding: 30px 20px;
+    }
+}
+

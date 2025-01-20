@@ -1,0 +1,110 @@
+/* Общие стили для страницы */
+body {
+    font-family: 'Roboto', sans-serif; /* Применяем шрифт */
+    background-color: #121212; /* Темный фон */
+    color: #ffffff; /* Белый текст */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Контейнер для всего профиля */
+.container {
+    width: 80%;
+    max-width: 900px;
+    padding: 30px;
+    background-color: #1e1e1e; /* Темный фон для контейнера */
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Заголовок профиля */
+h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Стиль для информации профиля */
+.profile-info, .profile-mood, .profile-code {
+    font-size: 1.2rem;
+    color: #d1d1d1;
+    margin: 15px 0;
+    text-align: left;
+}
+
+/* Стиль для отображения картинок */
+.profile-picture, .partner-picture {
+    margin: 20px 0;
+}
+
+.profile-picture img, .partner-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #4caf50;
+    object-fit: cover;
+}
+
+/* Стиль для отображения партнерской информации */
+h2 {
+    font-size: 2rem;
+    color: #4caf50; /* Зеленый для заголовков */
+    margin-top: 40px;
+}
+
+/* Стиль для сообщений об ошибках */
+ul.messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: #ff4d4d;
+    margin-bottom: 20px;
+}
+
+ul.messages li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+/* Эффект для ссылок */
+a {
+    color: #4caf50;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #81c784;
+}
+
+/* Мобильная адаптивность */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .profile-info, .profile-mood, .profile-code {
+        font-size: 1rem;
+    }
+
+    .profile-picture img, .partner-picture img {
+        width: 120px;
+        height: 120px;
+    }
+}
