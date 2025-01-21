@@ -52,6 +52,33 @@ h1 {
     object-fit: cover;
 }
 
+.link-profile-button {
+    background-color: #4caf50; /* Зеленая кнопка */
+    border: none;
+    cursor: pointer;
+    padding: 15px 30px; /* Увеличено пространство для удобства */
+    font-size: 1.2rem; /* Немного увеличен шрифт */
+    color: white; /* Белый текст */
+    border-radius: 30px; /* Сильно скругленные углы */
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для кнопки */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Эффект при наведении */
+.link-profile-button:hover {
+    background-color: #45a049; /* Немного темнее зеленый при наведении */
+    transform: translateY(-3px); /* Легкий подъем */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Увеличенная тень */
+}
+
+/* Эффект при активном состоянии (клик) */
+.link-profile-button:active {
+    background-color: #388e3c; /* Еще темнее при нажатии */
+    transform: translateY(0); /* Возвращаем в исходное положение */
+}
+
+
 /* Стиль для отображения партнерской информации */
 h2 {
     font-size: 2rem;
