@@ -1,0 +1,153 @@
+:root {
+    --rose-quartz: #000000;
+    --serenity: #030405;
+    --dusty-rose: #7a1212;
+    --deep-burgundy: #f2f1f5;
+    --vintage-gold: #a80909;
+}
+
+body {
+    background: linear-gradient(
+        135deg,
+        var(--rose-quartz) 0%,
+        var(--serenity) 100%
+    );
+    min-height: 100vh;
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: var(--deep-burgundy);
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.category-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--deep-burgundy);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        var(--vintage-gold),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: 0.5s;
+}
+
+.category-card:hover::before {
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: rotate(45deg) translateX(-50%); }
+    100% { transform: rotate(45deg) translateX(50%); }
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.category-name {
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.category-card:hover .category-name {
+    color: var(--deep-burgundy);
+}
+
+.home-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--deep-burgundy);
+    color: rgb(158, 12, 12);
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    border: 2px solid var(--deep-burgundy);
+    position: relative;
+    overflow: hidden;
+}
+
+.home-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.home-button:hover::before {
+    left: 100%;
+}
+
+.home-button:hover {
+    background: var(--dusty-rose);
+    color: var(--deep-burgundy);
+    border-color: var(--dusty-rose);
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+}

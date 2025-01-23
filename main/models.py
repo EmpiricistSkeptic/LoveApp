@@ -25,18 +25,17 @@ class Profile(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=255)
-
+    name = models.CharField(max_length=100, verbose_name="Название категории")
+    
     def __str__(self):
         return self.name
-    
 
 class Question(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    text = models.TextField()
-
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='questions')
+    text = models.TextField(verbose_name="Текст вопроса")
+    
     def __str__(self):
-        return self.text
+        return self.text[:50]
     
 
 class Answer(models.Model):

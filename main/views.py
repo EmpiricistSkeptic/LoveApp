@@ -24,6 +24,10 @@ def map_page(request):
 def questions_page(request):
     return render(request, 'questions.html')
 
+def custom_logout(request):
+    logout(request)
+    return redirect('main_page')
+
 def register_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -112,14 +116,15 @@ def profile_view(request):
     
 
 
-def category_list(request, category_id):
+def category_list(request):
     categories = Category.objects.all()
     return render(request, 'questions/category_list.html', {'categories': categories})
+
 
 def question_list(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     questions = Question.objects.filter(category=category)
-    return render(request, 'questions/question_list.html', {'category': category, 'questions': questions})
+    return render(request, 'questions/questions_list.html', {'category': category, 'questions': questions})
 
 
 def answer_question(request, question_id):

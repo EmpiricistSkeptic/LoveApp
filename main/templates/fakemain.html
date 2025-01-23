@@ -1,0 +1,96 @@
+/* Стили для профилей */
+.couple-profile {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Уменьшили расстояние между фото */
+    margin: -30px 0 20px; /* Скорректировали отступы */
+    position: relative;
+    z-index: 2;
+    flex-wrap: wrap; /* Для адаптивности */
+}
+
+.profile-card {
+    text-align: center;
+    perspective: 1000px;
+    margin: 10px; /* Добавили отступы между карточками */
+}
+
+.profile-image {
+    width: 120px; /* Уменьшили размер фото */
+    height: 120px;
+    border: 2px solid #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.05) rotateY(10deg); /* Уменьшили эффект поворота */
+}
+
+.profile-info {
+    margin-top: 12px;
+}
+
+.age {
+    font-size: 1rem; /* Уменьшили размер текста */
+}
+
+.zodiac {
+    font-size: 0.8rem;
+}
+
+/* Стили для компактного таймера */
+.love-timer {
+    margin: 15px 0 25px; /* Уменьшили отступы */
+    padding: 10px;
+    max-width: 500px; /* Сделали уже */
+}
+
+.timer-title {
+    font-size: 1.2rem; /* Уменьшили размер */
+    margin-bottom: 8px;
+}
+
+.timer-digits {
+    font-size: 1rem; /* Уменьшили размер цифр */
+    gap: 10px;
+}
+
+.timer-digits span {
+    padding: 6px 10px;
+    min-width: 50px; /* Уменьшили минимальную ширину */
+    font-size: 0.9rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .couple-profile {
+        gap: 20px; /* Меньший отступ на мобильных */
+        margin-top: -20px;
+    }
+    
+    .profile-image {
+        width: 100px; /* Уменьшили для мобильных */
+        height: 100px;
+    }
+
+    .love-timer {
+        margin: 10px 0 20px;
+        padding: 8px;
+    }
+
+    .timer-title {
+        font-size: 1rem;
+    }
+
+    .timer-digits {
+        font-size: 0.9rem;
+        gap: 8px;
+    }
+
+    .timer-digits span {
+        padding: 4px 8px;
+        min-width: 45px;
+        font-size: 0.8rem;
+    }
+}

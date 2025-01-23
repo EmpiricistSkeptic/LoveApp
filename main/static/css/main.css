@@ -177,3 +177,205 @@ html, body {
         width: 50%; /* Кнопки занимают почти всю ширину экрана */
     }
 }
+
+/* Новые стили для кнопок */
+.auth-container {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 1000 !important;
+    display: flex !important;
+    gap: 10px !important;
+}
+
+.auth-button {
+    padding: 8px 15px !important;
+    font-size: 0.9rem !important;
+    border-radius: 20px !important;
+    text-decoration: none !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(5px) !important;
+    transition: all 0.3s ease !important;
+}
+
+.auth-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Для мобильных */
+@media (max-width: 768px) {
+    .auth-button {
+        padding: 6px 12px !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+/* Стили для профилей */
+.couple-profile {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin: -50px 0 30px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .profile-card {
+    text-align: center;
+    perspective: 1000px;
+  }
+  
+  .profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    object-fit: cover;
+    transition: all 0.3s ease;
+  }
+  
+  .profile-image:hover {
+    transform: scale(1.05) rotateY(15deg);
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.4);
+  }
+  
+  .profile-info {
+    margin-top: 15px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+  
+  .age {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  
+  .zodiac {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-top: 5px;
+  }
+  
+  /* Стили для таймера */
+  .love-timer {
+    text-align: center;
+    margin: 20px 0 40px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .timer-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #fff;
+    font-family: 'Satisfy', cursive;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .timer-digits {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    color: #fff;
+  }
+  
+  .timer-digits span {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 8px;
+    min-width: 70px;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+  }
+  
+  .timer-digits span:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  /* Адаптивность */
+  @media (max-width: 768px) {
+    .couple-profile {
+      flex-direction: row; /* Оставляем горизонтальное расположение */
+      gap: 30px;
+      margin-top: -20px;
+      flex-wrap: nowrap; /* Запрещаем перенос на новую строку */
+      overflow-x: auto; /* Добавляем скролл при необходимости */
+      padding-bottom: 10px;
+  }
+    
+  .profile-image {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0; /* Запрещаем уменьшение размера */
+}
+  
+    .love-timer {
+      margin: 15px 0 30px;
+      padding: 10px;
+    }
+  
+    .timer-title {
+      font-size: 1.2rem;
+    }
+  
+    .timer-digits {
+      font-size: 1rem;
+      gap: 10px;
+    }
+  
+    .timer-digits span {
+      padding: 6px 10px;
+      min-width: 60px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .couple-profile {
+        gap: 25px;
+        margin-top: -15px;
+        padding-bottom: 5px;
+    }
+
+    .profile-image {
+        width: 80px;
+        height: 80px;
+        border-width: 1px;
+    }
+
+    .profile-info {
+        margin-top: 8px;
+    }
+
+    .age {
+        font-size: 0.8rem;
+    }
+
+    .zodiac {
+        font-size: 0.7rem;
+    }
+
+    .love-timer {
+        margin: 10px 0 15px;
+        padding: 5px;
+    }
+
+    .timer-digits span {
+        padding: 3px 6px;
+        min-width: 40px;
+        font-size: 0.7rem;
+    }
+}
