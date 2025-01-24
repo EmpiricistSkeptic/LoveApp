@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import RelationshipDate, Profile, Category, Answer, Question, UserAnswer
 from django.contrib.auth.models import User
-from .forms import LinkProfileForm, AnswerForm
+from .forms import LinkProfileForm, AnswerForm, ProfileEditForm
 
 
 def main_page(request):
@@ -100,7 +100,6 @@ def link_profile(request):
 @login_required
 def profile_view(request):
 
-    # Проверьте, существует ли профиль для текущего пользователя
     try:
         profile = request.user.profile
     except Profile.DoesNotExist:
@@ -109,15 +108,23 @@ def profile_view(request):
     if profile.picture:
         picture_url = profile.picture.url  # Путь к изображению
     else:
-        picture_url = None  # Если изображения нет
+        picture_url = None
 
     profile = get_object_or_404(Profile, user=request.user)
     answers = UserAnswer.objects.filter(user=request.user).select_related(
         'question__category',
         'chosen_answer'
     ).order_by('created_at')
+
+    if request.method == 'POST':
+        form = ProfileEditForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileEditForm(instance=profile)
     
-    return render(request, 'profile.html', {'profile': profile, 'picture_url': picture_url, 'answers': answers})
+    return render(request, 'profile.html', {'profile': profile, 'answers': answers, 'picture_url': picture_url, 'form': form })
 
 def category_list(request):
     categories = Category.objects.all()

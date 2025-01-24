@@ -28,23 +28,107 @@
 
         <!-- Информационная секция -->
         <div class="profile-section">
-            <div class="info-item">
-                <span class="info-label">Bio:</span>
-                <p class="info-content">{{ user.profile.bio|default:"No bio available" }}</p>
+            <!-- Режим просмотра -->
+            <div class="view-mode">
+                <div class="info-item">
+                    <span class="info-label">Profile Photo:</span>
+                    <div class="avatar-preview">
+                        {% if form.picture.value %}
+                            <img src="{{ form.picture.value.url }}" alt="Current photo" class="current-photo">
+                        {% endif %}
+                    </div>
+                </div>
+        
+                <div class="info-item">
+                    <span class="info-label">Bio:</span>
+                    <p class="view-bio">{{ form.bio.value|default:"Not specified" }}</p>
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">Mood:</span>
+                    <p class="view-mood">{{ form.mood.value|default:"Not specified" }}</p>
+                </div>
+        
+                <button onclick="enableEdit()" class="edit-button">✎ Edit Profile</button>
             </div>
-            
-            <div class="info-item">
-                <span class="info-label">Mood:</span>
-                <p class="info-content">{{ user.profile.mood|default:"Not set" }}</p>
-            </div>
-            
-            {% if user.profile.unique_code %}
-            <div class="info-item">
-                <span class="info-label">Unique Code:</span>
-                <p class="info-content code">{{ user.profile.unique_code }}</p>
-            </div>
-            {% endif %}
+        
+            <!-- Режим редактирования (изначально скрыт) -->
+            <form method="post" enctype="multipart/form-data" class="edit-mode" style="display:none;">
+                {% csrf_token %}
+                
+                <div class="info-item">
+                    <span class="info-label">Profile Photo:</span>
+                    <div class="avatar-upload">
+                        {{ form.picture }}
+                        <label for="id_picture" class="upload-label">
+                            <span class="upload-text">Click to upload</span>
+                        </label>
+                    </div>
+                </div>
+        
+                <div class="info-item">
+                    <span class="info-label">Bio:</span>
+                    {{ form.bio }}
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">Mood:</span>
+                    {{ form.mood }}
+                </div>
+        
+                <div class="form-actions">
+                    <button type="submit" class="link-profile-button">Save Changes</button>
+                    <button type="button" onclick="disableEdit()" class="btn back-btn">Cancel</button>
+                </div>
+            </form>
         </div>
+        
+        <script>
+        function enableEdit() {
+            document.querySelector('.view-mode').style.display = 'none';
+            document.querySelector('.edit-mode').style.display = 'block';
+            document.querySelector('input[name="mood"]').focus();
+        }
+        
+        function disableEdit() {
+            document.querySelector('.view-mode').style.display = 'block';
+            document.querySelector('.edit-mode').style.display = 'none';
+            // Можно добавить сброс значений формы при необходимости
+        }
+        </script>
+        
+        <style>
+        .edit-button {
+            background: none;
+            border: 2px solid #4CAF50;
+            color: #4CAF50;
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        
+        .edit-button:hover {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .view-mode p {
+            margin: 5px 0;
+            padding: 8px;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+        
+        .current-photo {
+            max-width: 150px;
+            border-radius: 50%;
+            margin: 10px 0;
+        }
+        </style>
+        
+        <!-- Остальная часть шаблона (link-profile-section и answers-history) остается без изменений -->
 
         <!-- Кнопка связывания профиля -->
         {% if not user.profile.partner %}
