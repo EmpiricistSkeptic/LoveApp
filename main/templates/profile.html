@@ -1,4 +1,5 @@
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,65 +7,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ user.username }}'s Profile</title>
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Fira+Code&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>{{ user.username }}</h1>
-
-
-        <!-- Отображение изображения профиля -->
-        {% if user.profile.picture %}
-            <div class="profile-picture">
-                <img src="{{ user.profile.picture.url }}" alt="{{ user.username }}'s Profile Picture">
+        <!-- Основная информация пользователя -->
+        <div class="profile-header">
+            <h1 class="profile-username">{{ user.username }}</h1>
+            
+            <!-- Блок с аватаркой -->
+            <div class="profile-avatar">
+                {% if user.profile.picture %}
+                    <img src="{{ user.profile.picture.url }}" alt="{{ user.username }}'s Profile Picture" class="avatar-image">
+                {% else %}
+                    <img src="{% static 'images/my_photo.png' %}" alt="Default Avatar" class="avatar-image">
+                {% endif %}
             </div>
-        {% else %}
-            <p>No profile picture available.</p>
-        {% endif %}
-
-        <!-- Отображение биографии -->
-        <div class="profile-info">
-            <p><strong>Bio:</strong> {{ user.profile.bio|default:"No bio available" }}</p>
         </div>
 
-        <!-- Отображение настроения -->
-        <div class="profile-mood">
-            <p><strong>Mood:</strong> {{ user.profile.mood|default:"Not set" }}</p>
-        </div>
-
-        <!-- Отображение уникального кода -->
-        {% if user.profile.unique_code %}
-            <div class="profile-code">
-                <p><strong>Unique Code:</strong> {{ user.profile.unique_code }}</p>
+        <!-- Информационная секция -->
+        <div class="profile-section">
+            <div class="info-item">
+                <span class="info-label">Bio:</span>
+                <p class="info-content">{{ user.profile.bio|default:"No bio available" }}</p>
             </div>
-        {% endif %}
-        
-        {% if not user.profile.partner %}
-        <a href="{% url 'link-profile' %}" class="link-profile-button">Link Your Profile</a>
-        {% endif %}
-
-        <!-- Проверка и отображение информации о партнере -->
-        {% if user.profile.partner %}
-            <h2>Partner's Profile</h2>
-            <p><strong>Partner:</strong> {{ user.profile.partner.user.username }}</p>
             
-            <!-- Отображение биографии партнера -->
-            <p><strong>Bio:</strong> {{ user.profile.partner.bio|default:"No bio available" }}</p>
-
-            <!-- Отображение настроения партнера -->
-            <p><strong>Mood:</strong> {{ user.profile.partner.mood|default:"Not set" }}</p>
+            <div class="info-item">
+                <span class="info-label">Mood:</span>
+                <p class="info-content">{{ user.profile.mood|default:"Not set" }}</p>
+            </div>
             
-            <!-- Проверка и отображение изображения партнера -->
-            {% if user.profile.partner.picture %}
-                <div class="partner-picture">
-                    <img src="{{ user.profile.partner.picture.url }}" alt="{{ user.profile.partner.user.username }}'s Profile Picture">
-                </div>
-            {% else %}
-                <p>No partner profile picture available.</p>
+            {% if user.profile.unique_code %}
+            <div class="info-item">
+                <span class="info-label">Unique Code:</span>
+                <p class="info-content code">{{ user.profile.unique_code }}</p>
+            </div>
             {% endif %}
+        </div>
+
+        <!-- Кнопка связывания профиля -->
+        {% if not user.profile.partner %}
+        <div class="link-profile-section">
+            <a href="{% url 'link-profile' %}" class="link-profile-button">Link Your Profile</a>
+        </div>
         {% endif %}
+
+        <section class="answers-history">
+            <h3>История ответов ({{ answers.count }})</h3>
+            
+            <div class="answers-timeline">
+                {% for answer in answers %}
+                <div class="answer-item">
+                    <div class="answer-meta">
+                        <span class="category-badge">{{ answer.question.category.name }}</span>
+                        <time>{{ answer.timestamp|date:"d M Y H:i" }}</time>
+                    </div>
+                    <div class="answer-content">
+                        <h4>{{ answer.question.text }}</h4>
+                        <div class="answer-value">
+                            {% if answer.chosen_answer %}
+                            <span class="correct-{% if answer.chosen_answer.is_correct %}true{% else %}false{% endif %}">
+                                {{ answer.chosen_answer.text }}
+                            </span>
+                            {% else %}
+                            <em>{{ answer.text_answer|truncatechars:100 }}</em>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="empty-state">😐 Вы пока не ответили ни на один вопрос</div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Секция партнера -->
+        {% if user.profile.partner %}
+        <div class="partner-section">
+            <h2 class="section-title">Partner's Profile</h2>
+            
+            <div class="partner-info">
+                <div class="partner-avatar">
+                    {% if user.profile.partner.picture %}
+                        <img src="{{ user.profile.partner.picture.url }}" alt="{{ user.profile.partner.user.username }}'s Profile Picture" class="avatar-image">
+                    {% else %}
+                        <img src="{% static 'images/default-avatar.png' %}" alt="Default Avatar" class="avatar-image">
+                    {% endif %}
+                </div>
+                
+                <div class="partner-details">
+                    <div class="info-item">
+                        <span class="info-label">Username:</span>
+                        <p class="info-content">{{ user.profile.partner.user.username }}</p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-label">Bio:</span>
+                        <p class="info-content">{{ user.profile.partner.bio|default:"No bio available" }}</p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-label">Mood:</span>
+                        <p class="info-content">{{ user.profile.partner.mood|default:"Not set" }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- История ответов -->
+        <!-- Добавить в profile.html -->
+
     </div>
 </body>
 </html>
-
+{% endblock %}

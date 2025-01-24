@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вопрос - {{ question.text|truncatechars:40 }}</title>
+    <link rel="stylesheet" href="{% static 'css/question_detail.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="question-container">
+        <div class="question-header">
+            <small>Категория: {{ question.category.name }}</small>
+            <h1>{{ question.text }}</h1>
+        </div>
+
+        <form method="post" class="answer-form">
+            {% csrf_token %}
+            
+            {% if form.errors %}
+            <div class="alert error">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="margin-right: 10px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                Пожалуйста, исправьте ошибки ниже
+            </div>
+            {% endif %}
+
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn save-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <path d="M17 21v-8H7v8"></path>
+                        <path d="M7 3v5h8"></path>
+                    </svg>
+                    Сохранить ответ
+                </button>
+                <a href="{% url 'category_questions' question.category.id %}" class="btn back-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Вернуться к вопросам
+                </a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

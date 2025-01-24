@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import RelationshipDate, Profile, Category, Answer, Question
+from .models import RelationshipDate, Profile, Category, Answer, Question, UserAnswer
 from django.contrib.auth.models import User
 from .forms import LinkProfileForm, AnswerForm
 
@@ -99,6 +99,7 @@ def link_profile(request):
 
 @login_required
 def profile_view(request):
+
     # Проверьте, существует ли профиль для текущего пользователя
     try:
         profile = request.user.profile
@@ -110,33 +111,72 @@ def profile_view(request):
     else:
         picture_url = None  # Если изображения нет
 
-    answers = Answer.objects.filter(user=request.user)
+    profile = get_object_or_404(Profile, user=request.user)
+    answers = UserAnswer.objects.filter(user=request.user).select_related(
+        'question__category',
+        'chosen_answer'
+    ).order_by('created_at')
     
     return render(request, 'profile.html', {'profile': profile, 'picture_url': picture_url, 'answers': answers})
-    
-
 
 def category_list(request):
     categories = Category.objects.all()
-    return render(request, 'questions/category_list.html', {'categories': categories})
+    return render(request, 'questions/categories.html', {'categories': categories})
 
 
-def question_list(request, category_id):
+@login_required
+def category_questions(request, category_id):
     category = get_object_or_404(Category, id=category_id)
-    questions = Question.objects.filter(category=category)
-    return render(request, 'questions/questions_list.html', {'category': category, 'questions': questions})
+    questions = Question.objects.filter(category=category).prefetch_related('answer_set')
+    
+    answered_ids = UserAnswer.objects.filter(
+        user=request.user,
+        question__in=questions
+    ).values_list('question_id', flat=True)
+
+    total_questions = questions.count()
+    answered_count = len(answered_ids)
+    
+    # Расчёт прогресса с защитой от деления на ноль
+    progress = round((answered_count / total_questions * 100), 2) if total_questions > 0 else 0.0
+
+    return render(request, 'questions/category_questions.html', {
+        'category': category,
+        'questions': questions,
+        'answered_questions': answered_ids,
+        'progress': float(progress) if progress else 0.0,  # Теперь передаём float (например: 66.67)
+        'total_questions': total_questions,
+        'answered_count': answered_count
+    })
 
 
-def answer_question(request, question_id):
+
+
+@login_required
+def question_detail(request, question_id):
     question = get_object_or_404(Question, id=question_id)
+    
     if request.method == 'POST':
-        form = AnswerForm(request.POST)
+        form = AnswerForm(request.POST, question=question)
         if form.is_valid():
-            answer = form.save(commit=False)
-            answer.question = question
-            answer.user = request.user
-            answer.save()
-            return redirect('question_list', category_id=question.category.id)
-        else:
-            form = AnswerForm()
-        return render(request, 'questions/answer_question.html', {'question': question, 'form': form})
+            # Сохраняем ответ
+            if question.question_type == 'text':
+                UserAnswer.objects.update_or_create(
+                    user=request.user,
+                    question=question,
+                    defaults={'text_answer': form.cleaned_data['answer']}
+                )
+            else:
+                UserAnswer.objects.update_or_create(
+                    user=request.user,
+                    question=question,
+                    defaults={'chosen_answer': form.cleaned_data['answers']}
+                )
+            return redirect('category_questions', category_id=question.category.id)
+    else:
+        form = AnswerForm(question=question)
+    
+    return render(request, 'questions/question_detail.html', {
+        'question': question,
+        'form': form
+    })

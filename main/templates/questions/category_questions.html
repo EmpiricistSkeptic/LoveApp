@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category.name }} - Вопросы</title>
+    <link rel="stylesheet" href="{% static 'css/category_questions.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h2>Вопросы категории "{{ category.name }}"</h2>
+    
+    <div class="questions-list">
+        {% for question in questions %}
+        <div class="question-item {% if question.id in answered_questions %}answered{% endif %}">
+            <a href="{% url 'question_detail' question.id %}">
+                {{ question.text|truncatechars:80 }}
+            </a>
+            {% if question.id in answered_questions %}
+            <span class="status-indicator">✓</span>
+            {% endif %}
+        </div>
+        {% empty %}
+        <div class="question-item">
+            <p>В этой категории пока нет вопросов</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -18,8 +18,8 @@ urlpatterns = [
     path('questions/', views.questions_page, name='questions_page'),
     path('link-profile/', views.link_profile, name='link-profile'),
     path('profile/', views.profile_view, name='profile'),
-    path('categories/', views.category_list, name='category_list'),
-    path('categories/<int:category_id>/', views.question_list, name='question_list'),
-    path('questions/<int:questions_id>/', views.answer_question, name='answer_question'),
-    
+    path('categories/', views.category_list, name='categories'),
+    path('categories/<int:category_id>/', views.category_questions, name='category_questions'),
+    path('question/<int:question_id>/', views.question_detail, name='question_detail'),
+
 ]
