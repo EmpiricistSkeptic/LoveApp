@@ -5,12 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ category.name }} - Вопросы</title>
+    <title>{{ category.name }} - Questions</title>
     <link rel="stylesheet" href="{% static 'css/category_questions.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <a href="/categories/" class="back-to-topics">Back to topics</a>
 </head>
 <body>
-    <h2>Вопросы категории "{{ category.name }}"</h2>
+    <h2>Questions of category "{{ category.name }}"</h2>
     
     <div class="questions-list">
         {% for question in questions %}

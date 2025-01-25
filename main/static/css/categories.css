@@ -95,6 +95,23 @@ h1::after {
     font-size: 1.5rem;
 }
 
+.back-to-main {
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #000000, #8fbcff);
+    border-radius: 8px;
+    font-weight: bold;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  
+  .back-to-main:hover {
+    background: linear-gradient(45deg, #000000, #76aaff);
+  }
+
 @media (max-width: 768px) {
     body {
         padding: 1rem;

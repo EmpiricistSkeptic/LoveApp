@@ -5,18 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Категории тестов</title>
+    <title>Topics</title>
     <link rel="stylesheet" href="{% static 'css/categories.css' %}">
+    <a href="/" class="back-to-main">To the main</a>
 </head>
 <body>
-    <h1>Выберите категорию</h1>
+    <h1>Choose a topic</h1>
     <div class="categories-grid">
         {% for category in categories %}
         <div class="category-card">
             <h2>{{ category.name }}</h2>
-            <p>Вопросов: {{ category.question_set.count }}</p>
+            <p>Questions: {{ category.question_set.count }}</p>
             <a href="{% url 'category_questions' category.id %}" class="btn">
-                <span>Начать тест</span>
+                <span>Start</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>

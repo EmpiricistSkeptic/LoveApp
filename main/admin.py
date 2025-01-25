@@ -5,6 +5,9 @@ admin.site.register(Profile)
 admin.site.register(RelationshipDate)
 admin.site.register(Answer)
 
+class AnswerInline(admin.TabularInline):  # Или StackedInline для вертикального отображения
+    model = Answer
+    extra = 4
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -12,5 +15,6 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
+    inlines = [AnswerInline]
     list_display = ('text', 'category')
     list_filter = ('category',)

@@ -51,7 +51,7 @@ class Answer(models.Model):
     is_correct = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.question.text[:30]} - {self.text}"
+        return f"{self.text}"
 
 
 class UserAnswer(models.Model):

@@ -14,13 +14,13 @@ class AnswerForm(forms.Form):
         if question.question_type == 'text':
             self.fields['answer'] = forms.CharField(
                 widget=forms.Textarea,
-                label='Ваш ответ'
+                label='Your answer'
             )
         else:
             self.fields['answers'] = forms.ModelChoiceField(
                 queryset=Answer.objects.filter(question=question),
                 widget=forms.RadioSelect if question.question_type == 'single' else forms.CheckboxSelectMultiple,
-                label='Выберите ответ'
+                label='Choose an answer'
             )
 
 
