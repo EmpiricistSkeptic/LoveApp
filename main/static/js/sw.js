@@ -1,9 +1,9 @@
-const CACHE_NAME = 'v2'; // Меняйте версию при обновлении файлов!
+const CACHE_NAME = 'v3'; // Меняйте версию при обновлении файлов!
 
 const ASSETS = [
   '/', 
   '/static/css/main.css', 
-  '/static/js/app.js',
+  '/static/js/main.js',
   '/static/icons/android-chrome-192x192.png', // Добавьте сюда иконки
   '/static/icons/android-chrome-512x512.png'
 ];
