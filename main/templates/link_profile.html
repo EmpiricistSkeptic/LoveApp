@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Link Profile</title>
     <link rel="stylesheet" href="{% static 'css/link_profile.css' %}">
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="{% static 'icons/android-chrome-192x192.png' %}">
 </head>
 <body>
     <div class="container">
@@ -25,5 +29,15 @@
             <button type="submit">Link Profile</button>
         </form>
     </div>
+    <script>
+        // Регистрация сервис-воркера
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register("{% static 'js/sw.js' %}")
+              .then(reg => console.log('✅ SW registered'))
+              .catch(err => console.log('❌ SW error:', err));
+          });
+        }
+        </script>
 </body>
 </html>

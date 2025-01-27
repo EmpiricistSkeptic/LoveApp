@@ -8,6 +8,10 @@
     <title>Question - {{ question.text|truncatechars:40 }}</title>
     <link rel="stylesheet" href="{% static 'css/question_detail.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="{% static 'icons/android-chrome-192x192.png' %}">
 </head>
 <body>
     <div class="question-container">
@@ -50,5 +54,15 @@
             </div>
         </form>
     </div>
+    <script>
+        // Регистрация сервис-воркера
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register("{% static 'js/sw.js' %}")
+              .then(reg => console.log('✅ SW registered'))
+              .catch(err => console.log('❌ SW error:', err));
+          });
+        }
+        </script>
 </body>
 </html>
